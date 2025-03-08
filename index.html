@@ -237,11 +237,84 @@
                 </div>
             </div>
         </section>
-                    <div style="background-color:#f8f8f8; padding:20px; text-align:center; border:1px solid #ccc; font-family:Arial, sans-serif;">
-  <h2 style="color:#ff5722; margin-bottom:10px;">10% de Desconto!</h2>
-  <p style="color:#555; margin-bottom:20px;">Aproveite 10% de desconto na sua primeira compra. Não perca!</p>
-  <a href="#" style="text-decoration:none; padding:10px 20px; background-color:#ff5722; color:white; border-radius:5px;">Saiba Mais</a>
-</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banner com Promoção e Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .banner {
+      background-color: #f8f8f8;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #ccc;
+      position: relative;
+      overflow: hidden;
+    }
+    .promo {
+      color: #ff5722;
+      font-size: 24px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
+    .timer {
+      color: #555;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .button {
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #ff5722;
+      color: white;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+  </style>
+  <script>
+    function startTimer(duration, display) {
+      let timer = duration, minutes, seconds;
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = 0;
+          display.textContent = "Tempo Esgotado!";
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      const duration = 5 * 60; // 5 minutos em segundos
+      const display = document.querySelector('.timer');
+      startTimer(duration, display);
+    };
+  </script>
+</head>
+<body>
+  <div class="banner">
+    <h2 class="promo">Promoção!</h2>
+    <p>Aproveite 10% de desconto na sua primeira compra. A oferta acaba em:</p>
+    <p class="timer">05:00</p>
+    <a href="#" class="button">Saiba Mais</a>
+  </div>
+</body>
+</html>
+
 
         <section id="testimonials">
             <img src="src/images/chef.jpg" id="testimonial_chef" alt="">
